@@ -43,9 +43,12 @@ df.to_csv(csv_file_path, index=False)
 # 2.3. Compactar o CSV em um arquivo ZIP
 zip_file_path = "Teste_Patrik.zip"
 with zipfile.ZipFile(zip_file_path, 'w') as zipf:
-    zipf.write(csv_file_path)
+    zipf.write(csv_file_path, os.path.basename(csv_file_path))
 
 # Remover o arquivo CSV após a compactação
 os.remove(csv_file_path)
+
+# Remover o arquivo PDF após a extração dos dados
+os.remove(pdf_file_path)
 
 print("Download, processamento e limpeza concluídos com sucesso!")
